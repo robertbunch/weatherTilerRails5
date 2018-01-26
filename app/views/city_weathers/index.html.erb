@@ -1,34 +1,84 @@
+<%= javascript_include_tag "https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js" %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>City Weather Tiler</h1>
 
-<br><br>
-
-<%= @weather_data %>
-
-<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
-
-</div>
-
-<% if @city_weathers.length == 0 %>
-  <h2>You need to add some cities!</h2>
-<% else %>
+  <% if @city_weathers.length == 0 %>
+    <h2>You need to add some cities!</h2>
+  <% else %>
+    <div class="filter col-sm-12">
+      <button class="warm-ones btn btn-success">Just the warm ones</button>
+      <button class="all btn btn-danger">All</button>
+    </div>  
+    <div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
       <% @city_data.each do |city| %>
-          <%= city['record'].cityName %>
-          <%= city['record'].zipCode %>
-          <%= city['record'].desc %>
-          <%= link_to 'Show', city['record'] %>
-          <%= link_to 'Edit', edit_city_weather_path(city['record']) %>
-          <%= link_to 'Destroy', city['record'], method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% main = city['weather_data']['list'][0]['weather'][0]['main'] %>
+          <% current = city['weather_data']['list'][0]['temp']['max'] %>
+          <% main_icon = city['weather_data']['list'][0]['weather'][0]['icon'] %>
         </tr>
       
 
-      <div class="box col-sm-4">
-        ...
+      <% 
+        if current > 70
+          iso_class = "warm" 
+        end 
+      %>
+      <div class="box <%= iso_class %>">
+          <div class="top-box col-sm-12">
+          <!-- Upper Left Info -->
+          <div class="col-sm-6 current">
+            <%= main %>
+          </div>
+          <!-- Upper Right Info -->
+          <div class="col-sm-6">
+            <div class="delete-city">
+              <%= link_to 'x', city['record'], method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+            <div class="col-sm-12 text-right">
+              <%= city['weather_data']['city']['name'] %>
+            </div>
+
+            <div class="col-sm-12 text-right">
+              <%= city['weather_data']['city']['country'] %>
+            </div>
+          </div>
+        </div>
+
+        <div class="main-icon">
+          <span class="current-temp"><%=current.round %>&deg;</span>
+          <span class="current-icon"><img src="http://openweathermap.org/img/w/<%=main_icon%>.png" /></span>
+        </div>
+
+        <div class="col-sm-12 city-days">
+          <% for i in 1..5 do %>
+            <% day_of_week = @days_of_week[Time.at(city['weather_data']['list'][i]['dt']).wday] %>
+            <% temp = city['weather_data']['list'][i]['temp']['max'] %>
+
+            <div class="date-temp day<%=i%>">
+              <div class="day-of-week"><%= day_of_week %></div>
+              <div class="doy-icon">
+                <img src="http://openweathermap.org/img/w/<%= city['weather_data']['list'][i]['weather'][0]['icon'] %>.png" />
+              </div>
+              <div class="doy-temp"><%= temp.to_i %>&deg;</div>
+            </div>
+
+          <% end %>
+
+          <!-- <%= link_to 'Show', city['record'] %> -->
+          <div class="desc">
+            <%= truncate city['record']['desc'], :length => 30, :separator => /\w/ %>
+          </div>          
+          <div class="edit col-sm-12">
+            <%= link_to 'Edit', edit_city_weather_path(city['record']) %>
+          </div>
+
+        </div>
       </div>      
 
 
       <% end %>
+    </div>
 <% end %>
 
 

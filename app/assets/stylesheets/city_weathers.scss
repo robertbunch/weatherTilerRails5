@@ -18,6 +18,81 @@
 .clearfix { zoom: 1; }
 
 .box{
-	height: 200px;
-	width: 200px;
+	height: 250px;
+	background-color: #87cefa;
+	color: #fff;
+	position: relative;
+	.top-box {
+		font-size: 16px;
+	}
+	.delete-city{
+		position: absolute;
+		top: 0px;
+		right: -10px;
+		a{
+			color: #ff0000;
+			font-weight: bold;
+			&:hover{
+				text-decoration: none;
+				background-color: inherit
+			}
+		}
+	}
+	.main-icon{
+		text-align: center;
+		// margin: -30px 0px;
+		img{
+			width: 75px;
+			display: inline;
+		}
+	}
+	.current-temp{
+		color: #111
+	}
+	.current-icon img{
+		max-width: 200px;
+		display: inline;
+		margin: -10px 0;
+	}
+	.date-temp{
+		width:20%;
+		float: left;
+		text-align: center;
+		border-right: 1px solid #eee;
+		&.day5{
+			border-right: none;
+		}
+		img{
+			display: inline;
+			width: 50px;
+			margin: -5px 0;			
+		}
+	}
+
+
+	.city-days{
+		margin-top: 10px;
+	}
+
+	.main-icon{
+		font-size: 32px;
+	}
+	.desc{
+
+		margin-top:10px;
+		font-size: 20px;
+	}
+	.edit,.desc{
+		text-align: center;
+		margin-top:10px;
+		a:hover{
+			background-color: inherit;
+			text-decoration: none;
+		}
+	}
+}
+
+
+footer{
+	margin-top: 100px;
 }

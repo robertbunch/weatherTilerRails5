@@ -3,10 +3,22 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('#masonry-container').masonry
+
+
+  $grid = $('#masonry-container').isotope(
     itemSelector: '.box'
-    columnWidth: 100
-    gutterWidth: 40
+    layoutMode: 'fitRows')
+  
+  $('.warm-ones').click ->
+    $grid.isotope filter: '.warm'
+    console.log("test")
+    return
+
+  $('.all').click ->
+    $grid.isotope filter: '*'
+    console.log("test")
+    return
+
   return
 
 # ---
