@@ -1,0 +1,2 @@
+class CityWeather < ApplicationRecord
+end

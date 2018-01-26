@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>City Weather Tiler</h1>
+
+<br><br>
+
+<%= @weather_data %>
+
+<div id="masonry-container" class="transitions-enabled infinite-scroll clearfix">
+
+</div>
+
+<% if @city_weathers.length == 0 %>
+  <h2>You need to add some cities!</h2>
+<% else %>
+      <% @city_data.each do |city| %>
+          <%= city['record'].cityName %>
+          <%= city['record'].zipCode %>
+          <%= city['record'].desc %>
+          <%= link_to 'Show', city['record'] %>
+          <%= link_to 'Edit', edit_city_weather_path(city['record']) %>
+          <%= link_to 'Destroy', city['record'], method: :delete, data: { confirm: 'Are you sure?' } %>
+        </tr>
+      
+
+      <div class="box col-sm-4">
+        ...
+      </div>      
+
+
+      <% end %>
+<% end %>
+
+
+

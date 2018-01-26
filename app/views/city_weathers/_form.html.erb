@@ -1,0 +1,32 @@
+<%= form_with(model: city_weather, local: true) do |form| %>
+  <% if city_weather.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(city_weather.errors.count, "error") %> prohibited this city_weather from being saved:</h2>
+
+      <ul>
+      <% city_weather.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :cityName %>
+    <%= form.text_field :cityName, id: :city_weather_cityName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :zipCode %>
+    <%= form.number_field :zipCode, id: :city_weather_zipCode %>
+  </div>
+
+  <div class="field">
+    <%= form.label :desc %>
+    <%= form.text_area :desc, id: :city_weather_desc %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Submit', :class => 'btn btn-primary' %>
+  </div>
+<% end %>

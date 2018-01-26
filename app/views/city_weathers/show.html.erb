@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cityname:</strong>
+  <%= @city_weather.cityName %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @city_weather.zipCode %>
+</p>
+
+<p>
+  <strong>Desc:</strong>
+  <%= @city_weather.desc %>
+</p>
+
+<%= link_to 'Edit', edit_city_weather_path(@city_weather) %> |
+<%= link_to 'Back', city_weathers_path %>
