@@ -82,78 +82,8 @@ test:
 # IMPORTANT -- DO NOT USE CAMELCASE, or you'll have to "" your DB
 production:
   <<: *default
-  database: weathertiler_production
-  username: weathertiler
-  password: <%= ENV['WEATHERTILER_DATABASE_PASSWORD'] %>
+  database: wt_prod
+  username: wt
+  password: <%= ENV['WT_DATABASE_PASSWORD'] %>
   host: localhost
-
-
-# Install nginx
-# Install RVM -- https://github.com/rvm/ubuntu_rvm
-# $ sudo apt-get install software-properties-common
-# $ sudo apt-add-repository -y ppa:rael-gc/rvm
-# $ sudo apt-get update
-# Have to log out now
-# $ rvm install ruby 2.3.1
-
-# OR
-# get rbenv
-# $ sudo apt-get install autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev
-# $ git clone https://github.com/rbenv/rbenv.git ~/.rbenv
-
-# Add to path
-# $ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
-# $ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-# source ~/.bashrc
-# doublecheck --- $ type rbenv
-# $ git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
-# $ rbenv install 2.3.1
-# $ rbenv global 2.3.1
-# $ ruby -v
-
-# FORGOT THIS PART... need to get rbenv-vars plugin
-# $ cd ~/.rbenv/plugins
-# $ git clone https://github.com/sstephenson/rbenv-vars.git
-
-# Install rails (will get default)
-# $ gem install rails
-# $ gem install rails -v 4.2.7 (will get specific)
-
-# clone project
-# $ bundle install 
-# FAIL - this kicked my butt
-# $ sudo apt-get install libpq-dev (solution)
-# $ rake secret
-# FAIL - missing node!!
-# curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-# now we can rake secret!
-# $ rake secret
-# this will kick off a looong hash... 891c363aed6c92c178160f830748f8e61b21c511c3d8bd46ff0c6468bd04153eb741a271bd84398aad8f51cfbce959d55d13c5d18b33db09550fa43b19357da7
-
-# Create a .rbenv-vars file for the plugin to read:
-# $ vi .rbenv-vars
-# inside the file set up the vars the application needs. In my case:
-#   SECRET_KEY_BASE=
-#   APPNAME_DATABASE_USER=
-#   APPNAME_DATABASE_PASSWORD=
-# If you run this, you should see your stuff:
-#   rbenv vars
-
-# $ sudo apt install postgresql
-# $ sudo -u postgres createdb weatherTiler_production
-# $ sudo -u postgres createuser -s weathertiler
-# $ sudo -u postgres psql
-# postgres=# GRANT ALL PRIVILEGES ON DATABASE weatherTiler_production to weathertiler;
-
-
-# To set password either:
-# 1. ALTER USER weatherTiler WITH PASSWORD '123456';
-# 2. \password weathertiler
-
-# Check over config/config.yml
-
-# Rake the DB!
-# $ RAILS_ENV=production rake db:create
-# $ RAILS_ENV=production rake db:migrate
-# $ RAILS_ENV=production rake assets:precompile
 
