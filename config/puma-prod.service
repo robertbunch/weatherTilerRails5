@@ -6,10 +6,11 @@ After=network.target
 Type=simple
 User=ubuntu
 WorkingDirectory=/var/www/wt
-ExecStart=/home/deploy/.rbenv/bin/rbenv exec bundle exec puma -C /home/deploy/app/shared/config/puma.rb
-ExecStop=/home/deploy/.rbenv/bin/rbenv exec bundle exec pumactl -S /home/deploy/app/shared/tmp/pids/puma.state stop
+ExecStart=/home/ubuntu/.rbenv/bin/rbenv exec bundle exec puma -C /var/www/wt/config/puma.rb
+ExecStop=/home/ubuntu/.rbenv/bin/rbenv exec bundle exec pumactl -S /var/www/wt/tmp/pids/puma.state stop
 TimeoutSec=15
 Restart=always
+
 
 [Install]
 WantedBy=multi-user.target
