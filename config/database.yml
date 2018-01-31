@@ -87,3 +87,4 @@ production:
   password: <%= ENV['WT_DATABASE_PASSWORD'] %>
   host: localhost
 
+
