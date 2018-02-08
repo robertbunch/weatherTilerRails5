@@ -1,8 +1,9 @@
 # A tiling weather widget, built in Rails 5 and PostGres with Puma, and a little isotope coffee script on the front.
-## Purpose: A Rails app that uses connecting to PostGres for AWS deployment course students.
+
+## Purpose: A Rails app that uses connecting to PostGres for AWS deployment course students. [Find the course here](https://www.udemy.com/deploying-web-apps-simplified-quick-or-in-depth-on-aws)
 
 ### Overview
-I had not used Rails professionally since beta 4, so I had to relearn Rails. Please don't hate if I did something stupid. I will gladly update code if there are suggestions. I generated a scaffold for the tile (called city_weathers). Check the gem file for any unknown gems, but the only ones I added to the rails 5 generator were masonry-rails and twitter-bootstrap-rails. The site (obviously) uses bootstrap, and I used masonry to include isotope to give it a little front-end pizzaz with coffeescript. 
+I had not used Rails professionally since beta 4, so I had to relearn Rails. Please don't hate if I did something stupid. I will gladly update code if there are suggestions. I generated a scaffold for the tile (called city_weathers). Check the gem file for any unknown gems, but the only ones I added to the rails 5 generator were [masonry-rails](https://github.com/kristianmandrup/masonry-rails) and [twitter-bootstrap-rails](https://github.com/seyhunak/twitter-bootstrap-rails). The site (obviously) uses bootstrap, and I used masonry to include isotope to give it a little front-end pizzaz with coffeescript. 
 
 There is no database seed. Rake and you'll be set.
 
@@ -38,6 +39,7 @@ production:
 14. Link up the vhost, test and restart nginx
 15. Set up RAILS_ENV in the rbenv file or change the ruby 
 
+# Steps in detail
 1. Install nginx
 ```
 $ sudo apt install nginx
